@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Password Strength Checker</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Password Strength Checker</h1>
+            
+            <div class="input-group">
+                <label for="password">Create your password:</label>
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="off">
+                <div class="show-password">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show password</label>
+                </div>
+            </div>
+            
+            <div class="strength-meter">
+                <div class="strength-meter-fill" id="strength-meter-fill"></div>
+            </div>
+            
+            <div class="strength-label" id="strength-label">Strength: </div>
+            
+            <div class="feedback" id="feedback"></div>
+            
+            <div class="criteria">
+                <div class="criteria-item">
+                    <span class="criteria-icon invalid" id="length-icon">✗</span>
+                    <span>At least 8 characters</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon invalid" id="uppercase-icon">✗</span>
+                    <span>Contains uppercase letters</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon invalid" id="lowercase-icon">✗</span>
+                    <span>Contains lowercase letters</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon invalid" id="number-icon">✗</span>
+                    <span>Contains numbers</span>
+                </div>
+                <div class="criteria-item">
+                    <span class="criteria-icon invalid" id="special-icon">✗</span>
+                    <span>Contains special characters</span>
+                </div>
+            </div>
+        </div>
+    
+       
+    </body>
+    </html>
+    <script src="app.js"></script>
+</body>
+</html>
