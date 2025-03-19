@@ -1,109 +1,141 @@
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #dddddd;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.container {
-    background-color: #969696;
-    border-radius: 8px;
-    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.strength-meter {
-    height: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
-    background-color: #e1e1e1;
-    position: relative;
-    overflow: hidden;
-}
-
-.strength-meter-fill {
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
-    width: 0;
-}
-
-.feedback {
-    margin-top: 15px;
-    min-height: 100px;
-}
-
-.criteria {
-    margin-top: 20px;
-}
-
-.criteria-item {
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.criteria-icon {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: white;
-}
-
-.criteria-icon.valid {
-    background-color: #4CAF50;
-}
-
-.criteria-icon.invalid {
-    background-color: #f44336;
-}
-
-.strength-label {
-    margin-top: 10px;
-    text-align: right;
-    font-weight: bold;
-}
-
-.show-password {
-    margin-top: 10px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #78909c ;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: #d8dbde;
+            border-radius: 6px;
+            box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
+            padding: 25px;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 22px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* Input styles */
+        input {
+            width: 95%; 
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+       
+        .strength-meter {
+            height: 10px;
+            margin-top: 18px;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+      
+        .strength-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.4s ease, background-color 0.4s ease;
+            width: 0;
+        }
+        
+        .feedback {
+            margin-top: 12px;
+            min-height: 90px;
+        }
+        
+        
+        .criteria {
+            margin-top: 18px;
+        }
+        
+        .criteria-item {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+        
+       
+        .criteria-icon {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+        }
+        
+        .criteria-icon.valid {
+            background-color: #4CAF50;
+        }
+        
+       
+        .criteria-icon.invalid {
+            background-color: #e53935;
+        }
+        
+        .strength-label {
+            margin-top: 8px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        
+    
+        .show-password {
+            display: flex;
+            flex-direction: row-reverse; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 9px;
+            margin-left: 20px;
+            font-size: 14px;
+            user-select: none;
+        }
+       
+        #show-password {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        ul {
+            padding-left: 22px;
+            margin-top: 8px;
+        }
+        
+       
+        li {
+            margin-bottom: 5px;
+        }
+        
+      
+    

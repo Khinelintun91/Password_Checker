@@ -1,162 +1,167 @@
-// Purpose: JavaScript code for the password strength checker.
-document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('password');
-    const strengthMeterFill = document.getElementById('strength-meter-fill');
-    const strengthLabel = document.getElementById('strength-label');
-    const feedback = document.getElementById('feedback');
-    const showPasswordCheckbox = document.getElementById('show-password');
-    
-    // Criteria icons
-    const lengthIcon = document.getElementById('length-icon');
-    const uppercaseIcon = document.getElementById('uppercase-icon');
-    const lowercaseIcon = document.getElementById('lowercase-icon');
-    const numberIcon = document.getElementById('number-icon');
-    const specialIcon = document.getElementById('special-icon');
-    
-    // Function to toggle password visibility
-    showPasswordCheckbox.addEventListener('change', function() {
-        passwordInput.type = this.checked ? 'text' : 'password';
-    });
-    
-    // Function to check password strength
-    passwordInput.addEventListener('input', function() {
-        const password = this.value;
-        let strength = 0;
-        let feedbackText = '';
-        
-        // Regular expressions for checking criteria
-        const lengthRegex = /.{8,}/;
-        const uppercaseRegex = /[A-Z]/;
-        const lowercaseRegex = /[a-z]/;
-        const numberRegex = /[0-9]/;
-        const specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-        
-        // Check criteria and update icons
-        if (lengthRegex.test(password)) {
-            strength += 20;
-            lengthIcon.textContent = "✓";
-            lengthIcon.className = "criteria-icon valid";
-        } else {
-            lengthIcon.textContent = "✗";
-            lengthIcon.className = "criteria-icon invalid";
-        }
-        
-        if (uppercaseRegex.test(password)) {
-            strength += 20;
-            uppercaseIcon.textContent = "✓";
-            uppercaseIcon.className = "criteria-icon valid";
-        } else {
-            uppercaseIcon.textContent = "✗";
-            uppercaseIcon.className = "criteria-icon invalid";
-        }
-        
-        if (lowercaseRegex.test(password)) {
-            strength += 20;
-            lowercaseIcon.textContent = "✓";
-            lowercaseIcon.className = "criteria-icon valid";
-        } else {
-            lowercaseIcon.textContent = "✗";
-            lowercaseIcon.className = "criteria-icon invalid";
-        }
-        
-        if (numberRegex.test(password)) {
-            strength += 20;
-            numberIcon.textContent = "✓";
-            numberIcon.className = "criteria-icon valid";
-        } else {
-            numberIcon.textContent = "✗";
-            numberIcon.className = "criteria-icon invalid";
-        }
-        
-        if (specialRegex.test(password)) {
-            strength += 20;
-            specialIcon.textContent = "✓";
-            specialIcon.className = "criteria-icon valid";
-        } else {
-            specialIcon.textContent = "✗";
-            specialIcon.className = "criteria-icon invalid";
-        }
-        
-        // Update strength meter
-        strengthMeterFill.style.width = strength + '%';
-        
-        // Update strength label and color
-        if (strength === 0) {
-            strengthLabel.textContent = 'Strength: Enter a password';
-            strengthMeterFill.style.backgroundColor = '#e1e1e1';
-        } else if (strength <= 20) {
-            strengthLabel.textContent = 'Strength: Very Weak';
-            strengthMeterFill.style.backgroundColor = '#f44336';
-            feedbackText = 'Your password is very weak. It needs significant improvement.';
-        } else if (strength <= 40) {
-            strengthLabel.textContent = 'Strength: Weak';
-            strengthMeterFill.style.backgroundColor = '#FF9800';
-            feedbackText = 'Your password is weak. Try adding more variety.';
-        } else if (strength <= 60) {
-            strengthLabel.textContent = 'Strength: Medium';
-            strengthMeterFill.style.backgroundColor = '#FFEB3B';
-            feedbackText = 'Your password has medium strength. Keep improving!';
-        } else if (strength <= 80) {
-            strengthLabel.textContent = 'Strength: Strong';
-            strengthMeterFill.style.backgroundColor = '#8BC34A';
-            feedbackText = 'Your password is strong, but could be better.';
-        } else {
-            strengthLabel.textContent = 'Strength: Very Strong';
-            strengthMeterFill.style.backgroundColor = '#4CAF50';
-            feedbackText = 'Excellent! Your password is very strong.';
-        }
-        
-        // Additional feedback based on password content
-        let suggestions = [];
-        
-        if (password.length < 8) {
-            suggestions.push('Make your password at least 8 characters long.');
-        }
-        
-        if (!uppercaseRegex.test(password)) {
-            suggestions.push('Add uppercase letters (A-Z).');
-        }
-        
-        if (!lowercaseRegex.test(password)) {
-            suggestions.push('Add lowercase letters (a-z).');
-        }
-        
-        if (!numberRegex.test(password)) {
-            suggestions.push('Add numbers (0-9).');
-        }
-        
-        if (!specialRegex.test(password)) {
-            suggestions.push('Add special characters (like !@#$%^&*).');
-        }
-        
-        // Check for common patterns
-        if (/^[0-9]+$/.test(password)) {
-            suggestions.push('Using only numbers is not secure.');
-        }
-        
-        if (/^[a-zA-Z]+$/.test(password)) {
-            suggestions.push('Using only letters is not secure.');
-        }
-        
-        if (/(.)\1{2,}/.test(password)) {
-            suggestions.push('Avoid repeating characters (like "aaa" or "111").');
-        }
-        
-        // Update feedback text
-        if (password.length === 0) {
-            feedback.textContent = '';
-        } else {
-            let feedbackHTML = `<p>${feedbackText}</p>`;
+
+       
+        setTimeout(function() {
+            // Cache DOM elements 
+            var passwordInput = document.getElementById('password');
+            var strengthMeterFill = document.getElementById('strength-meter-fill');
+            var strengthLabel = document.getElementById('strength-label');
+            var feedback = document.getElementById('feedback');
+            var showPasswordCheckbox = document.getElementById('show-password');
             
-            if (suggestions.length > 0) {
-                feedbackHTML += '<p>Suggestions:</p><ul>';
-                suggestions.forEach(suggestion => {
-                    feedbackHTML += `<li>${suggestion}</li>`;
-                });
-                feedbackHTML += '</ul>';
+            
+            // Criteria icons
+            const lengthIcon = document.getElementById('length-icon');
+            const uppercaseIcon = document.getElementById('uppercase-icon');
+            const lowercaseIcon = document.getElementById('lowercase-icon');
+            const numberIcon = document.getElementById('number-icon');
+            const specialIcon = document.getElementById('special-icon');
+            
+            // Function to toggle password visibility with slight logic flaw
+            showPasswordCheckbox.addEventListener('change', function() {
+                if(this.checked) {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            });
+            
+            // Function to update criteria icons
+            function updateIcon(isValid, iconElement) {
+                if(isValid) {
+                    iconElement.textContent = "✓";
+                    iconElement.className = "criteria-icon valid";
+                } else {
+                    iconElement.textContent = "✗"; 
+                    iconElement.className = "criteria-icon invalid";
+                }
             }
             
-            feedback.innerHTML = feedbackHTML;
-        }
-    });
-});
+            // Check password on input with some redundant code
+          
+            passwordInput.addEventListener('input', checkPassword);
+            passwordInput.addEventListener('keyup', function(e) {
+               
+                if(e.key === 'Backspace') {
+                    checkPassword();
+                }
+            });
+            
+            function checkPassword() {
+                var password = passwordInput.value;
+                var strength = 0;
+                var feedbackText = '';
+                
+           
+                var hasLength = password.length >= 8;
+                var hasUppercase = /[A-Z]/.test(password);
+                var hasLowercase = /[a-z]/.test(password);
+                var hasNumber = /[0-9]/.test(password);
+               
+                var hasSpecial = /[!@#$%^&*()_\-+=<>?]/.test(password);
+                
+     
+                updateIcon(hasLength, lengthIcon);
+                updateIcon(hasUppercase, uppercaseIcon);
+                updateIcon(hasLowercase, lowercaseIcon);
+                updateIcon(hasNumber, numberIcon);
+                updateIcon(hasSpecial, specialIcon);
+                
+              
+          
+                if(hasLength) strength += 19;
+                if(hasUppercase) strength += 21;
+                if(hasLowercase) strength += 18;
+                if(hasNumber) strength += 21;
+                if(hasSpecial) strength += 21;
+                
+                
+                if(strength > 100) strength = 100;
+                
+                
+               
+                strengthMeterFill.style.width = strength + '%';
+                
+                if(password.length === 0) {
+                    strengthLabel.textContent = 'Strength: Enter a password';
+                    strengthMeterFill.style.backgroundColor = '#e0e0e0';
+                    feedback.innerHTML = '';
+                    return; 
+                }
+                
+                // Update color and label text based on strength
+                if(strength <= 20) {
+                    strengthLabel.textContent = 'Strength: Very Weak';
+                    strengthMeterFill.style.backgroundColor = '#f44336';
+                    feedbackText = 'Your password is very weak. You need to improve it.';
+                } else if(strength <= 40) {
+                    strengthLabel.textContent = 'Strength: Weak';
+                    strengthMeterFill.style.backgroundColor = '#FF9800';
+                    feedbackText = 'Your password is still weak. Keep improving.';
+                } else if(strength <= 60) {
+                    strengthLabel.textContent = 'Strength: Medium';
+                    strengthMeterFill.style.backgroundColor = '#FFEB3B';
+                    feedbackText = 'Your password has medium strength. It\'s getting better!';
+                } else if(strength <= 80) {
+                    strengthLabel.textContent = 'Strength: Strong';
+                    strengthMeterFill.style.backgroundColor = '#8BC34A';
+                    feedbackText = 'Your password is strong. Good job!';
+                } else {
+                    strengthLabel.textContent = 'Strength: Very Strong';
+                    strengthMeterFill.style.backgroundColor = '#4CAF50';
+                    feedbackText = 'Great job! Your password is very strong.';
+                }
+                
+               
+                var suggestions = [];
+                
+                if(!hasLength) {
+                    suggestions.push('Add more characters (at least 8)');
+                }
+                
+                if(!hasUppercase) {
+                    suggestions.push('Include some uppercase letters (A-Z)');
+                }
+                
+                if(!hasLowercase) {
+                    suggestions.push('Add some lowercase letters (a-z)');
+                }
+                
+                if(!hasNumber) {
+                    suggestions.push('Include at least one number');
+                }
+                
+                if(!hasSpecial) {
+                    suggestions.push('Add special characters like !@#$%^&*');
+                }
+                
+               
+                if(password.length > 0 && /^[0-9]+$/.test(password)) {
+                    suggestions.push('Don\'t use only numbers');
+                }
+                
+                if(password.length > 0 && /^[a-zA-Z]+$/.test(password)) {
+                    suggestions.push('Using only letters isn\'t secure enough');
+                }
+                
+              
+                if(/(.)\1\1/.test(password)) {
+                    suggestions.push('Avoid repeating the same character');
+                }
+                
+                
+                var feedbackHTML = '<p>' + feedbackText + '</p>';
+                
+                if(suggestions.length > 0) {
+                    feedbackHTML += '<p>Tips to improve:</p><ul>';
+                    
+                    
+                    for(let i = 0; i < suggestions.length; i++) {
+                        feedbackHTML += '<li>' + suggestions[i] + '</li>';
+                    }
+                    
+                    feedbackHTML += '</ul>';
+                }
+                
+                feedback.innerHTML = feedbackHTML;
+            }
+        }, 100); 
