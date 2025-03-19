@@ -1,141 +1,222 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #78909c;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #78909c ;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        .container {
-            background-color: #d8dbde;
-            border-radius: 6px;
-            box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
-            -webkit-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
-            padding: 25px;
-            width: 100%;
-            max-width: 480px;
-        }
-        
-        h1 {
-            text-align: center;
-            color: #444;
-            margin-bottom: 25px;
-        }
-        
-        .input-group {
-            margin-bottom: 22px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        /* Input styles */
-        input {
-            width: 95%; 
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-       
-        .strength-meter {
-            height: 10px;
-            margin-top: 18px;
-            border-radius: 4px;
-            background-color: #e0e0e0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-      
-        .strength-meter-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.4s ease, background-color 0.4s ease;
-            width: 0;
-        }
-        
-        .feedback {
-            margin-top: 12px;
-            min-height: 90px;
-        }
-        
-        
-        .criteria {
-            margin-top: 18px;
-        }
-        
-        .criteria-item {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-        }
-        
-       
-        .criteria-icon {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: white;
-        }
-        
-        .criteria-icon.valid {
-            background-color: #4CAF50;
-        }
-        
-       
-        .criteria-icon.invalid {
-            background-color: #e53935;
-        }
-        
-        .strength-label {
-            margin-top: 8px;
-            text-align: right;
-            font-weight: bold;
-            font-size: 13px;
-        }
-        
+.container {
+    background-color: #d8dbde;
+    border-radius: 6px;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
+    padding: 18px;
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input styles */
+input {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.strength-meter {
+    height: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    position: relative;
+    overflow: hidden;
+}
+
+.strength-meter-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+    width: 0;
+}
+
+.feedback {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.criteria {
+    margin-top: 15px;
+}
+
+.criteria-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.criteria-icon {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.criteria-icon.valid {
+    background-color: #4CAF50;
+}
+
+.criteria-icon.invalid {
+    background-color: #e53935;
+}
+
+.strength-label {
+    margin-top: 8px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.show-password {
+    display: flex;
+    align-items: center; 
+    margin-top: 10px;
+    font-size: 14px;
+    user-select: none;
+}
+
+#show-password {
+    width: auto;
+    margin-right: 5px;
+}
+
+ul {
+    padding-left: 20px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Portrait phone styles - Apply to all phones in portrait mode */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
     
-        .show-password {
-            display: flex;
-            flex-direction: row-reverse; 
-            align-items: center; 
-            gap: 8px; 
-            margin-top: 9px;
-            margin-left: 20px;
-            font-size: 14px;
-            user-select: none;
-        }
-       
-        #show-password {
-            margin-right: 5px;
-            vertical-align: middle;
-        }
-        
-        ul {
-            padding-left: 22px;
-            margin-top: 8px;
-        }
-        
-       
-        li {
-            margin-bottom: 5px;
-        }
-        
-      
+    .container {
+        padding: 16px;
+        width: 92%;
+        margin-top: 110px;
+    }
     
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .feedback {
+        /* Allow feedback to expand based on content */
+        min-height: auto;
+        max-height: none;
+    }
+    
+    .criteria {
+        margin-top: 15px;
+    }
+    
+    .criteria-item {
+        font-size: 14px;
+        padding: 2px 0;
+    }
+    
+    label[for="show-password"] {
+        font-size: 14px;
+        font-weight: normal;
+    }
+}
+
+/* Small phones in portrait */
+@media screen and (max-width: 360px) and (orientation: portrait) {
+    body {
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 14px;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .input-group {
+        margin-bottom: 12px;
+    }
+    
+    .criteria-item {
+        font-size: 13px;
+    }
+    
+    .criteria-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Larger phones in portrait */
+@media screen and (min-width: 400px) and (max-width: 480px) and (orientation: portrait) {
+    .container {
+        width: 94%;
+        padding: 18px;
+    }
+}
+
+/* Handle larger screens */
+@media screen and (min-width: 481px) {
+    .container {
+        padding: 25px;
+        width: 85%;
+        box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.75);
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+}
